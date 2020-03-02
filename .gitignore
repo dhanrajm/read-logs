@@ -1,0 +1,5 @@
+node_modules
+metadata
+example.txt
+package-lock.json
+env.js
