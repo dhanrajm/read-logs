@@ -30,7 +30,7 @@ node index.js
 
 Application should be running at the configured port
 
-## Instructions to test:
+## Instructions for API call:
 
 GET /api/v1/logs
 
@@ -41,7 +41,7 @@ Search Params:
 - day:<Optional | Start day of logs | Values 1-31 | Ex: 1>
 - hour:<Optional | Start hour of logs | Values 0-24 | Ex: 11>
 - minute:<Optional | Start minute of logs | Values 0-60 | Ex: 19>
-- second:<Optional | Start second of logs | Valuse 0-60 | Ex: 06>
+- second:<Optional | Start second of logs | Values 0-60 | Ex: 06>
 - milliSecond:<Optional | Start millisecond of logs | Values 0-999 | Ex: 342>
 
 Below two params are for pagination
@@ -51,3 +51,7 @@ Below two params are for pagination
 
 Sample Request
 **curl --location --request GET http://localhost:5000/api/v1/logs?year=2020&month=0&day=1&hour=00&minute=19&second=06&milliSecond=342&skip=0&limit=100**
+
+## Tests
+ Tests are given in the folder ./tests
+ Execute: node ./test/index.js 
