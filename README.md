@@ -51,10 +51,30 @@ Below two params are for pagination
 - skip: <Optional | Lines to be skippep>
 - limit: <Optional | Total lines to be returned. Response will have min(limit, RL_RESP_LINES_LIMIT) >
 
+Response:
+```
+{
+    "status": <Status of the operation>,
+    "message": <Message indicating the result of the operation>,
+    "data": <Data returned as aresult of the operation>
+}
+```
 Sample Request
 
 > curl --location --request GET http://localhost:5000/api/v1/logs?year=2020&month=0&day=1&hour=00&minute=19&second=06&milliSecond=342&skip=0&limit=100
 
+Sample Response
+```json
+{
+    "status": 200,
+    "message": "all ok",
+    "data": [
+        "2020-01-01T00:19:06.342Z Querying table posts",
+        "2020-01-01T00:19:13.822Z Finished reading posts",
+        "2020-01-01T00:19:22.108Z Response 200 sent to 42.152.167.121 for /home",
+    ]
+}
+```
 ## Tests
  
  Tests are given in the folder ./tests
