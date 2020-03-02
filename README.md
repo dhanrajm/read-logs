@@ -50,8 +50,11 @@ Below two params are for pagination
 - limit: <Optional | Total lines to be returned. Response will have min(limit, RL_RESP_LINES_LIMIT) >
 
 Sample Request
-**curl --location --request GET http://localhost:5000/api/v1/logs?year=2020&month=0&day=1&hour=00&minute=19&second=06&milliSecond=342&skip=0&limit=100**
+
+> curl --location --request GET http://localhost:5000/api/v1/logs?year=2020&month=0&day=1&hour=00&minute=19&second=06&milliSecond=342&skip=0&limit=100
 
 ## Tests
+ 
  Tests are given in the folder ./tests
+ 
  Execute: node ./test/index.js 
