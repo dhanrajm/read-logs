@@ -19,8 +19,81 @@ async function start () {
     assert.strictEqual(result.status, 200, 'Health check failed')
     console.log('tested the health of server')
 
+    console.log('testing get logs params')
+    result = await cases.getLogs('202', '0', '01', '00', '00', '11', '172')
+    assert.notStrictEqual(
+      typeof result,
+      'undefined',
+      'get logs year param test failed'
+    )
+    assert.notStrictEqual(result, null, 'get logs year param test failed')
+    assert.strictEqual(result.status, 422, 'get logs year param test failed')
+
+    result = await cases.getLogs('2020', '12', '01', '00', '00', '11', '172')
+    assert.notStrictEqual(
+      typeof result,
+      'undefined',
+      'get logs month param test failed'
+    )
+    assert.notStrictEqual(result, null, 'get logs month param test failed')
+    assert.strictEqual(result.status, 422, 'get logs month param test failed')
+
+    result = await cases.getLogs('2020', '11', '0', '00', '00', '11', '172')
+    assert.notStrictEqual(
+      typeof result,
+      'undefined',
+      'get logs day param test failed'
+    )
+    assert.notStrictEqual(result, null, 'get logs day param test failed')
+    assert.strictEqual(result.status, 422, 'get logs day param test failed')
+
+    result = await cases.getLogs('2020', '11', '1', '61', '00', '11', '172')
+    assert.notStrictEqual(
+      typeof result,
+      'undefined',
+      'get logs hour param test failed'
+    )
+    assert.notStrictEqual(result, null, 'get logs hour param test failed')
+    assert.strictEqual(result.status, 422, 'get logs hour param test failed')
+
+    result = await cases.getLogs('2020', '11', '1', '00', '61', '11', '172')
+    assert.notStrictEqual(
+      typeof result,
+      'undefined',
+      'get logs minute param test failed'
+    )
+    assert.notStrictEqual(result, null, 'get logs minute param test failed')
+    assert.strictEqual(result.status, 422, 'get logs minute param test failed')
+
+    result = await cases.getLogs('2020', '11', '1', '00', '60', '61', '172')
+    assert.notStrictEqual(
+      typeof result,
+      'undefined',
+      'get logs second param test failed'
+    )
+    assert.notStrictEqual(result, null, 'get logs second param test failed')
+    assert.strictEqual(result.status, 422, 'get logs second param test failed')
+
+    result = await cases.getLogs('2020', '11', '1', '00', '60', '60', '1000')
+    assert.notStrictEqual(
+      typeof result,
+      'undefined',
+      'get logs millisecond param test failed'
+    )
+    assert.notStrictEqual(
+      result,
+      null,
+      'get logs millisecond param test failed'
+    )
+    assert.strictEqual(
+      result.status,
+      422,
+      'get logs millisecond param test failed'
+    )
+    console.log('tested get logs params')
+
     console.log('testing get logs ')
-    let dateArr = [
+    const dateArr = [
       '2016-01-01T00:00:11.172Z',
       '2016-02-01T00:00:11.172Z',
       '2017-01-01T00:00:11.172Z',
@@ -29,8 +102,8 @@ async function start () {
       '2018-02-01T00:00:11.172Z',
       '2019-01-01T00:00:00.000Z'
     ]
-    for (let d of dateArr) {
-      let dt = new Date(d)
+    for (const d of dateArr) {
+      const dt = new Date(d)
       result = await cases.getLogs(
         dt.getUTCFullYear(),
         dt.getUTCMonth(),
