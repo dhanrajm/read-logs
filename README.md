@@ -4,19 +4,21 @@
 
 ### Step 1: Create an env.js file at root with following structure
 
-\*\*const config = {
-RL_NODE_ENV: 'production',
-RL_HOST: '127.0.0.1',
-RL_PORT: '5000', // port where app will run
-RL_APP_ID: 'read-logs',
-RL_APPLOG_DIR: '../logs', // log directory for app
-RL_METADATA_DIR: '../data/metadata', // directory where generated meta data will be stored
-RL_LOG_FILE_PATH: '../data/example.txt', // path to the log file to be read
-RL_RESP_LINES_LIMIT: 100 // Maximum number of lines to be returned in one response
+```javascript
+const config = {
+  RL_NODE_ENV: 'production',
+  RL_HOST: '127.0.0.1',
+  RL_PORT: '5000',
+  RL_APP_ID: 'read-logs',
+  RL_APPLOG_DIR: '../logs',
+  RL_METADATA_DIR: '../data/metadata',
+  RL_LOG_FILE_PATH: '../data/example.txt',
+  RL_RESP_LINES_LIMIT: 100
 }
 
-/_ deep copy the config to process.env obejct _/
-process.env = Object.assign(process.env, config)\*\*
+/* deep copy the config to process.env obejct */
+process.env = Object.assign(process.env, config)
+```
 
 ### Step 2: Generate the metadata from log file
 
