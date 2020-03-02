@@ -22,17 +22,19 @@ process.env = Object.assign(process.env, config)
 
 ### Step 2: Generate the metadata from log file
 
+> node scripts/index.js
+
 PS: Ensure that the log file is kept in the path given in env value RL_LOG_FILE_PATH
 
 ### Step 3: Run the below command from application root directory to start the nodejs web server
 
-node index.js
+> node index.js
 
 Application should be running at the configured port
 
 ## Instructions for API call:
 
-GET /api/v1/logs
+> GET /api/v1/logs
 
 Search Params:
 
@@ -57,4 +59,6 @@ Sample Request
  
  Tests are given in the folder ./tests
  
- Execute: node ./test/index.js 
+ Execute: 
+ 
+ > node ./test/index.js 
